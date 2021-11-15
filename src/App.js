@@ -1,4 +1,5 @@
 import Landing from './components/landing';
+import City from './components/city';
 import { BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 import {Navbar, Nav, FormControl, Form} from 'react-bootstrap'
 
@@ -15,7 +16,7 @@ function App() {
           <i class='fas fa-donate'></i> &nbsp;<small>Be a part of the solution, not part of the pollution</small>
           </div>
           <Navbar bg="dark" expand="lg" variant="dark">
-            <Navbar.Brand><Link to="/" style={{color:"white", textDecoration:"none"}}>Air-Quality-Predictor</Link></Navbar.Brand>
+            <Navbar.Brand><Link to="/" style={{color:"white", textDecoration:"none"}}>Air-Quality-Monitoring</Link></Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="mr-auto">
@@ -29,7 +30,10 @@ function App() {
           {/* A <Switch> looks through its children <Route>s and
               renders the first one that matches the current URL. */}
           <Switch>
-            <Route path="/">
+            <Route path="/:city">
+              <City/>
+            </Route>
+            <Route exact path="/">
               <Landing/>
             </Route>
           </Switch>

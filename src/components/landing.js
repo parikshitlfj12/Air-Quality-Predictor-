@@ -1,4 +1,5 @@
-import { useState, React, useEffect } from "react";
+import { useState, React } from "react";
+import { useHistory } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { styled } from "@mui/material/styles";
 import Card from "@mui/material/Card";
@@ -36,43 +37,51 @@ const ExpandMore = styled((props) => {
 }));
 
 export default function Landing() {
+  const history = useHistory();
   const [expanded, setExpanded] = useState(false);
   const [CityData, setCityData] = useState({
-    Ahemdabad: [0.5, 1, 1.2, 0.2, 4, 3, 4, 2, 2.2],
-    Delhi: [0.5, 1, 1.2, 0.2, 4, 3, 4, 2, 2.2],
-    Mumbai: [0.5, 1, 1.2, 0.2, 4, 3, 4, 2, 2.2],
-    Jaipur: [0.5, 1, 1.2, 0.2, 4, 3, 4, 2, 2.2],
-    askdnj: [0.5, 1, 1.2, 0.2, 4, 3, 4, 2, 2.2],
-    aaa: [0.5, 1, 1.2, 0.2, 4, 3, 4, 2, 2.2],
-    gEAD: [0.5, 1, 1.2, 0.2, 4, 3, 4, 2, 2.2],
-    KLsasd: [0.5, 1, 1.2, 0.2, 4, 3, 4, 2, 2.2],
-    Nfi: [0.5, 1, 1.2, 0.2, 4, 3, 4, 2, 2.2],
+    Ahemdabad: [[50, 40, 1.2, 0.2, 4, 3, 4, 2, 2.2, 3], "https://images.citizenmatters.in/wp-content/uploads/sites/2/2020/04/29111342/Ahmedabad.jpg"],
+    Delhi: [[0.5, 1, 1.2, 0.2, 4, 3, 4, 2, 2.2, 3], "https://cdn.britannica.com/37/189837-050-F0AF383E/New-Delhi-India-War-Memorial-arch-Sir.jpg"],
+    Mumbai: [[0.5, 1, 1.2, 0.2, 4, 3, 4, 2, 2.2, 3], "https://cdn.britannica.com/37/189837-050-F0AF383E/New-Delhi-India-War-Memorial-arch-Sir.jpg"],
+    Jaipur: [[0.5, 1, 1.2, 0.2, 4, 3, 4, 2, 2.2, 3], "https://cdn.britannica.com/37/189837-050-F0AF383E/New-Delhi-India-War-Memorial-arch-Sir.jpg"],
+    askdnj: [[0.5, 1, 1.2, 0.2, 4, 3, 4, 2, 2.2, 3], "https://cdn.britannica.com/37/189837-050-F0AF383E/New-Delhi-India-War-Memorial-arch-Sir.jpg"],
+    aaa: [[0.5, 1, 1.2, 0.2, 4, 3, 4, 2, 2.2, 3], "https://cdn.britannica.com/37/189837-050-F0AF383E/New-Delhi-India-War-Memorial-arch-Sir.jpg"],
+    gEAD: [[0.5, 1, 1.2, 0.2, 4, 3, 4, 2, 2.2, 3], "https://cdn.britannica.com/37/189837-050-F0AF383E/New-Delhi-India-War-Memorial-arch-Sir.jpg"],
+    KLsasd: [[0.5, 1, 1.2, 0.2, 4, 3, 4, 2, 2.2, 3], "https://cdn.britannica.com/37/189837-050-F0AF383E/New-Delhi-India-War-Memorial-arch-Sir.jpg"],
+    Nfi: [[0.5, 1, 1.2, 0.2, 4, 3, 4, 2, 2.2, 3], "https://cdn.britannica.com/37/189837-050-F0AF383E/New-Delhi-India-War-Memorial-arch-Sir.jpg"],
   });
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+
+  const handleClick = ({key, value}) => {
+    history.push(key, { key: key, value: value })
+  }
+
+
   return (
     <div>          
       <Grid container spacing={2}>
         {Object.entries(CityData).map(([key, value]) => (
-          <Grid item xs={3} style={{marginTop:"50px"}}>
+          <Grid item xs={3} style={{marginTop:"20px"}}>
             <div key={key}>
-              <Card sx={{ maxWidth: 345 }} style={{marginLeft: "auto", marginRight: "auto"}}>
+              <Card sx={{ maxWidth: 345 }} style={{marginLeft: "auto", marginRight: "auto", cursor: "pointer"}} onClick={() => handleClick({key, value})}>
                 <CardHeader
                   action={
                     <IconButton aria-label="settings">
                       <MoreVertIcon />
                     </IconButton>
                   }
-                  title="Shrimp and Chorizo Paella"
+                  title={key}
                   subheader="September 14, 2016"
                 />
                 <CardMedia
                   component="img"
                   height="194"
-                  image="https://mui.com/static/images/cards/paella.jpg"
-                  alt="Paella dish"
+                  // image="https://mui.com/static/images/cards/paella.jpg"
+                  image={value[1]}
+                  alt={key}
                 />
                 <CardContent>
                   <Typography variant="body2" color="text.secondary">

@@ -18,47 +18,27 @@ import {Container, Row, Col} from "react-bootstrap";
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 
-const Item = styled(Paper)(({ theme }) => ({
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
-}));
-
-const ExpandMore = styled((props) => {
-  const { expand, ...other } = props;
-  return <IconButton {...other} />;
-})(({ theme, expand }) => ({
-  transform: !expand ? "rotate(0deg)" : "rotate(180deg)",
-  marginLeft: "auto",
-  transition: theme.transitions.create("transform", {
-    duration: theme.transitions.duration.shortest,
-  }),
-}));
 
 export default function Landing() {
   const history = useHistory();
-  const [expanded, setExpanded] = useState(false);
-  const [CityData, setCityData] = useState({
-    Ahemdabad: [[50, 40, 1.2, 0.2, 4, 3, 4, 2, 2.2, 3], "https://images.citizenmatters.in/wp-content/uploads/sites/2/2020/04/29111342/Ahmedabad.jpg"],
-    Delhi: [[0.5, 1, 1.2, 0.2, 4, 3, 4, 2, 2.2, 3], "https://cdn.britannica.com/37/189837-050-F0AF383E/New-Delhi-India-War-Memorial-arch-Sir.jpg"],
-    Mumbai: [[0.5, 1, 1.2, 0.2, 4, 3, 4, 2, 2.2, 3], "https://cdn.britannica.com/37/189837-050-F0AF383E/New-Delhi-India-War-Memorial-arch-Sir.jpg"],
-    Jaipur: [[0.5, 1, 1.2, 0.2, 4, 3, 4, 2, 2.2, 3], "https://cdn.britannica.com/37/189837-050-F0AF383E/New-Delhi-India-War-Memorial-arch-Sir.jpg"],
-    askdnj: [[0.5, 1, 1.2, 0.2, 4, 3, 4, 2, 2.2, 3], "https://cdn.britannica.com/37/189837-050-F0AF383E/New-Delhi-India-War-Memorial-arch-Sir.jpg"],
-    aaa: [[0.5, 1, 1.2, 0.2, 4, 3, 4, 2, 2.2, 3], "https://cdn.britannica.com/37/189837-050-F0AF383E/New-Delhi-India-War-Memorial-arch-Sir.jpg"],
-    gEAD: [[0.5, 1, 1.2, 0.2, 4, 3, 4, 2, 2.2, 3], "https://cdn.britannica.com/37/189837-050-F0AF383E/New-Delhi-India-War-Memorial-arch-Sir.jpg"],
-    KLsasd: [[0.5, 1, 1.2, 0.2, 4, 3, 4, 2, 2.2, 3], "https://cdn.britannica.com/37/189837-050-F0AF383E/New-Delhi-India-War-Memorial-arch-Sir.jpg"],
-    Nfi: [[0.5, 1, 1.2, 0.2, 4, 3, 4, 2, 2.2, 3], "https://cdn.britannica.com/37/189837-050-F0AF383E/New-Delhi-India-War-Memorial-arch-Sir.jpg"],
-  });
 
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
+  // key  -> City Name, Value-> [[NO, NO2, NH3, CO, SO2], imageURL, Description]
+
+  const [CityData, setCityData] = useState({
+    Ahemdabad: [[50, 40, 1.2, 0.2, 4, 3, 4, 2, 2.2, 3], "https://images.citizenmatters.in/wp-content/uploads/sites/2/2020/04/29111342/Ahmedabad.jpg", "The distinguished city of Delhi is blessed with several gardens and botanical houses which are again one of the features that Delhi is famous for. The Garden of Five senses, the Lodi Gardens, the Buddha Jayanti Park and Nehru Park are some of these gardens which have made Delhi famous among nature lovers."],
+    Delhi: [[0.5, 1, 1.2, 0.2, 4, 3, 4, 2, 2.2, 3], "https://cdn.britannica.com/37/189837-050-F0AF383E/New-Delhi-India-War-Memorial-arch-Sir.jpg", "The distinguished city of Delhi is blessed with several gardens and botanical houses which are again one of the features that Delhi is famous for. The Garden of Five senses, the Lodi Gardens, the Buddha Jayanti Park and Nehru Park are some of these gardens which have made Delhi famous among nature lovers."],
+    Mumbai: [[0.5, 1, 1.2, 0.2, 4, 3, 4, 2, 2.2, 3], "https://cdn.britannica.com/37/189837-050-F0AF383E/New-Delhi-India-War-Memorial-arch-Sir.jpg", "The distinguished city of Delhi is blessed with several gardens and botanical houses which are again one of the features that Delhi is famous for. The Garden of Five senses, the Lodi Gardens, the Buddha Jayanti Park and Nehru Park are some of these gardens which have made Delhi famous among nature lovers."],
+    Jaipur: [[0.5, 1, 1.2, 0.2, 4, 3, 4, 2, 2.2, 3], "https://cdn.britannica.com/37/189837-050-F0AF383E/New-Delhi-India-War-Memorial-arch-Sir.jpg", "The distinguished city of Delhi is blessed with several gardens and botanical houses which are again one of the features that Delhi is famous for. The Garden of Five senses, the Lodi Gardens, the Buddha Jayanti Park and Nehru Park are some of these gardens which have made Delhi famous among nature lovers."],
+    askdnj: [[0.5, 1, 1.2, 0.2, 4, 3, 4, 2, 2.2, 3], "https://cdn.britannica.com/37/189837-050-F0AF383E/New-Delhi-India-War-Memorial-arch-Sir.jpg", "The distinguished city of Delhi is blessed with several gardens and botanical houses which are again one of the features that Delhi is famous for. The Garden of Five senses, the Lodi Gardens, the Buddha Jayanti Park and Nehru Park are some of these gardens which have made Delhi famous among nature lovers."],
+    aaa: [[0.5, 1, 1.2, 0.2, 4, 3, 4, 2, 2.2, 3], "https://cdn.britannica.com/37/189837-050-F0AF383E/New-Delhi-India-War-Memorial-arch-Sir.jpg", "The distinguished city of Delhi is blessed with several gardens and botanical houses which are again one of the features that Delhi is famous for. The Garden of Five senses, the Lodi Gardens, the Buddha Jayanti Park and Nehru Park are some of these gardens which have made Delhi famous among nature lovers."],
+    gEAD: [[0.5, 1, 1.2, 0.2, 4, 3, 4, 2, 2.2, 3], "https://cdn.britannica.com/37/189837-050-F0AF383E/New-Delhi-India-War-Memorial-arch-Sir.jpg", "The distinguished city of Delhi is blessed with several gardens and botanical houses which are again one of the features that Delhi is famous for. The Garden of Five senses, the Lodi Gardens, the Buddha Jayanti Park and Nehru Park are some of these gardens which have made Delhi famous among nature lovers."],
+    KLsasd: [[0.5, 1, 1.2, 0.2, 4, 3, 4, 2, 2.2, 3], "https://cdn.britannica.com/37/189837-050-F0AF383E/New-Delhi-India-War-Memorial-arch-Sir.jpg", "The distinguished city of Delhi is blessed with several gardens and botanical houses which are again one of the features that Delhi is famous for. The Garden of Five senses, the Lodi Gardens, the Buddha Jayanti Park and Nehru Park are some of these gardens which have made Delhi famous among nature lovers."],
+    Nfi: [[0.5, 1, 1.2, 0.2, 4, 3, 4, 2, 2.2, 3], "https://cdn.britannica.com/37/189837-050-F0AF383E/New-Delhi-India-War-Memorial-arch-Sir.jpg", "The distinguished city of Delhi is blessed with several gardens and botanical houses which are again one of the features that Delhi is famous for. The Garden of Five senses, the Lodi Gardens, the Buddha Jayanti Park and Nehru Park are some of these gardens which have made Delhi famous among nature lovers."],
+  });
 
   const handleClick = ({key, value}) => {
     history.push(key, { key: key, value: value })
   }
-
 
   return (
     <div>          
@@ -79,15 +59,14 @@ export default function Landing() {
                 <CardMedia
                   component="img"
                   height="194"
-                  // image="https://mui.com/static/images/cards/paella.jpg"
                   image={value[1]}
                   alt={key}
                 />
                 <CardContent>
                   <Typography variant="body2" color="text.secondary">
-                    This impressive paella is a perfect party dish and a fun meal to cook
-                    together with your guests. Add 1 cup of frozen peas along with the mussels,
-                    if you like.
+                    <p style={{overflow: "scroll", height:"100px"}}>
+                      {value[2]}
+                    </p>
                   </Typography>
                 </CardContent>
                 {/* Like, Share Icons */}
@@ -98,27 +77,7 @@ export default function Landing() {
                   <IconButton aria-label="share">
                     <ShareIcon />
                   </IconButton>
-
-
-
-                  {/* Expanding */}
-                  <ExpandMore
-                    expand={expanded}
-                    onClick={handleExpandClick}
-                    aria-expanded={expanded}
-                    aria-label="show more"
-                  >
-                    <ExpandMoreIcon />
-                  </ExpandMore>
                 </CardActions>
-                <Collapse in={expanded} timeout="auto" unmountOnExit>
-                  <CardContent>
-                    <Typography paragraph>Current Condition:</Typography>
-                    <Typography paragraph>
-                      The city is under extereme condition of SO2 and NO2. Needs to be fixed
-                    </Typography>
-                  </CardContent>
-                </Collapse>
               </Card>
             </div>
           </Grid>

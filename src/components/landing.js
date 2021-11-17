@@ -57,7 +57,7 @@ export default function Landing() {
                     </IconButton>
                   }
                   title={item["city_name"]}
-                  subheader="September 14, 2016"
+                  subheader="October, 2021"
                 />
                 <CardMedia
                   component="img"
